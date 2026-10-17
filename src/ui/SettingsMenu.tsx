@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useSettingsStore, type Quality } from '@/state/useSettingsStore';
 import { BRAND } from '@/theme/tokens';
-import { signOut } from '@/auth/AuthGate';
 
 const OPTS: { value: Quality; label: string; hint: string }[] = [
   { value: 'low', label: 'Low', hint: 'No AA/AO · fastest' },
@@ -49,16 +48,6 @@ export function SettingsMenu() {
               </button>
             );
           })}
-          <div className="my-1 border-t border-white/10" />
-          <button
-            onClick={() => {
-              setOpen(false);
-              void signOut();
-            }}
-            className="flex w-full items-center rounded-md px-2 py-1.5 text-left text-xs font-semibold text-[color:var(--hud-text)] transition-colors hover:bg-white/10"
-          >
-            ⎋ Sign out
-          </button>
         </div>
       )}
     </div>
