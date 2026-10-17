@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect, useState, type FormEvent } from 'react';
 import type { Session } from '@supabase/supabase-js';
-import { supabase, supabaseConfigured } from './supabase';
+import { supabase, supabaseConfigured, arrivedFromInvite } from './supabase';
 
 // The 3D twin is only downloaded after a successful sign-in.
 const App = lazy(() => import('../App'));
@@ -11,7 +11,8 @@ type View = 'loading' | 'signin' | 'forgot' | 'recovery' | 'app';
  * Login gate (Supabase Auth, email + password). Nothing of the twin renders —
  * or even downloads — until there is a valid session. There is no public
  * sign-up: accounts are created by the admin in the Supabase dashboard.
- * Also handles "forgot password" → emailed link → set a new password.
+ * Also handles "forgot password" → emailed link → set a new password, and
+ * admin invites → invite link → the invitee sets their password first.
  */
 export function AuthGate() {
   const [session, setSession] = useState<Session | null>(null);
@@ -21,11 +22,11 @@ export function AuthGate() {
     if (!supabase) return;
     supabase.auth.getSession().then(({ data }) => {
       setSession(data.session);
-      setView(data.session ? 'app' : 'signin');
+      setView(data.session ? (arrivedFromInvite ? 'recovery' : 'app') : 'signin');
     });
     const { data: sub } = supabase.auth.onAuthStateChange((event, s) => {
       setSession(s);
-      if (event === 'PASSWORD_RECOVERY') setView('recovery');
+      if (event === 'PASSWORD_RECOVERY' || (s && arrivedFromInvite && event === 'SIGNED_IN')) setView('recovery');
       else if (event === 'SIGNED_OUT') setView('signin');
       else if (s && event === 'SIGNED_IN') setView((v) => (v === 'recovery' ? v : 'app'));
     });

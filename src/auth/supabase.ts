@@ -8,6 +8,10 @@ import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 const url = import.meta.env.VITE_SUPABASE_URL as string | undefined;
 const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined;
 
+/** Captured before the client consumes the URL hash: did the user arrive from
+ *  an admin invite link? They must choose a password before entering. */
+export const arrivedFromInvite = typeof window !== 'undefined' && /type=invite/.test(window.location.hash);
+
 export const supabaseConfigured = Boolean(url && anonKey);
 
 export const supabase: SupabaseClient | null = supabaseConfigured
