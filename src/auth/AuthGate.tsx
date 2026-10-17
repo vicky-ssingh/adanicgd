@@ -165,10 +165,10 @@ function NewPasswordForm({ onDone }: { onDone: () => void }) {
 function Shell({ children }: { children: React.ReactNode }) {
   return (
     <div
-      className="grid h-full w-full place-items-center overflow-y-auto px-4 py-10"
+      className="flex h-full w-full flex-col overflow-y-auto px-4 py-10"
       style={{ background: 'radial-gradient(1200px 800px at 50% 30%, var(--adani-navy), var(--adani-navy-deep) 70%)' }}
     >
-      <div className="w-full max-w-sm">
+      <div className="m-auto w-full max-w-sm">
         <div className="mb-6 flex flex-col items-center gap-4">
           <div className="rounded-xl bg-white/95 px-5 py-3" style={{ lineHeight: 0 }}>
             <img src="/assets/branding/adani_logo.png" alt="Adani" style={{ width: 160, height: 'auto', display: 'block' }} draggable={false} />
