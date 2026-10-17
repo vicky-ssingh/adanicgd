@@ -1,0 +1,24 @@
+/* ADANI CGD — BRAND CSS CUSTOM PROPERTIES (spec §0.3)
+   Mirrors src/theme/tokens.ts. These two files are the ONLY place brand hex
+   values live. Referenced by Tailwind (tailwind.config.js) and raw CSS. */
+
+:root {
+  --adani-primary: #0b74b0;
+  --adani-primary-soft: #3c9bd1;
+  --adani-navy: #0b2545;
+  --adani-navy-deep: #071a33;
+  --adani-accent: #75479c;
+  --adani-alert: #bd3861;
+  --adani-teal-cng: #0f8b8d;
+  --adani-violet-png: #6c5ab8;
+  --adani-surface: #f5f7fa;
+  --adani-surface-dark: #12233b;
+  --adani-ink: #0e1726;
+  --adani-muted: #9fb2c8;
+
+  /* Derived UI tokens */
+  --panel-bg: rgba(11, 37, 69, 0.62);
+  --panel-border: rgba(60, 155, 209, 0.28);
+  --panel-highlight: rgba(255, 255, 255, 0.06);
+  --hud-text: #e8f1fb;
+}

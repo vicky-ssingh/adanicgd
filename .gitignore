@@ -1,0 +1,21 @@
+node_modules
+dist
+dist-ssr
+*.local
+.DS_Store
+.vite
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env / secrets
+.env
+.env.*
+!.env.example
+
+# tooling
+.netlify
+.claude/
+
+# large local reference material (2D flow + photos) — kept out of git
+refrence/
