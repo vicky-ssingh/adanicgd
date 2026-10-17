@@ -33,6 +33,7 @@ import { useCpStore } from '@/state/useCpStore';
 import { useXrayStore } from '@/state/useXrayStore';
 import { PipelineLegend } from './PipelineLegend';
 import { SettingsMenu } from './SettingsMenu';
+import { AccountMenu } from './AccountMenu';
 import { TourController } from './TourController';
 import { useViewStore } from '@/state/useViewStore';
 import { useTourStore } from '@/state/useTourStore';
@@ -120,6 +121,7 @@ export function Hud() {
             🖥 <span className="ml-1 hidden md:inline">{presentation ? 'Present On' : 'Present'}</span>
           </button>
           <SettingsMenu />
+          <AccountMenu />
         </div>
       )}
 
